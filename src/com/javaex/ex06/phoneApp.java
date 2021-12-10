@@ -19,12 +19,6 @@ public class phoneApp {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		String info = sc.nextLine();
-		String[] cutArray = info.split(",");
-		String n = cutArray[0];
-		String h = cutArray[1];
-		String c = cutArray[2];
-		
 		Reader fr = new FileReader("D:\\javaStudy\\file\\PhoneDB.txt");
 		BufferedReader br = new BufferedReader(fr);
 		
@@ -43,6 +37,19 @@ public class phoneApp {
 		    pList.add(p01);
 		
 		}
+		
+		for(int i=0; i<pList.size(); i++) {
+	    	System.out.println("이름: " + pList.get(i).getName());
+	    	System.out.println("핸드폰: " + pList.get(i).getHp());
+			System.out.println("회사: " + pList.get(i).getCompany());
+	        System.out.println("");
+		}
+		
+		String info = sc.nextLine();
+		String[] cutArray = info.split(",");
+		String n = cutArray[0];
+		String h = cutArray[1];
+		String c = cutArray[2];
 		
 	    Person p02 = new Person(n,h,c);
 	    pList.add(p02);
@@ -69,6 +76,8 @@ public class phoneApp {
 		//System.out.println("이름: " +pList.get(3));
 		br.close();
 		bw.close();
+		
+		sc.close();
 	}
 
 }
