@@ -19,17 +19,14 @@ public class phoneApp {
 		
 		Scanner sc = new Scanner(System.in);
 		
-			String info = sc.nextLine();
-			String[] cutArray = info.split(",");
-			String n = cutArray[0];
-			String h = cutArray[1];
-			String c = cutArray[2];
+		String info = sc.nextLine();
+		String[] cutArray = info.split(",");
+		String n = cutArray[0];
+		String h = cutArray[1];
+		String c = cutArray[2];
 		
 		Reader fr = new FileReader("D:\\javaStudy\\file\\PhoneDB.txt");
 		BufferedReader br = new BufferedReader(fr);
-		
-		Writer fw = new FileWriter("D:\\javaStudy\\file\\PhoneDB.txt");
-		BufferedWriter bw = new BufferedWriter(fw);
 		
 		while(true) {
 			String line = br.readLine();
@@ -45,11 +42,13 @@ public class phoneApp {
 		    Person p01 = new Person(name,hp,company);
 		    pList.add(p01);
 		
-		    }
+		}
 		
-		    Person p02 = new Person(n,h,c);
-		    pList.add(p02);
-		    
+	    Person p02 = new Person(n,h,c);
+	    pList.add(p02);
+		
+	    Writer fw = new FileWriter("D:\\javaStudy\\file\\PhoneDB.txt");
+		BufferedWriter bw = new BufferedWriter(fw);
 		
 		for(int i=0; i<pList.size(); i++) {
 	    	System.out.println("이름: " + pList.get(i).getName());
@@ -58,11 +57,18 @@ public class phoneApp {
 	        System.out.println("");
 		}
 		
-		bw.write("dd");
-		bw.write(h);
-		bw.write(c);
+		
+		for(int i=0; i<pList.size(); i++) {
+			bw.write(pList.get(i).getName());
+			bw.write(",");
+			bw.write(pList.get(i).getHp());
+			bw.write(",");
+			bw.write(pList.get(i).getCompany());
+			bw.newLine();
+		}
 		//System.out.println("이름: " +pList.get(3));
 		br.close();
+		bw.close();
 	}
 
 }
